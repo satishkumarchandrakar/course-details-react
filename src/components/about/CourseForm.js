@@ -4,35 +4,38 @@ import SelectInput from '../common/SelectInput';
 import PropTypes from 'prop-types';
 
 const CourseForm = ({course, allAuthors, onSave, onDelete, onChange, deleting, saving, errors}) => {
-  
-    return (
+  return (
     <form>
       <h1> Manage Course</h1>
       <TextInput
         name="title"
         label="Title"
+        value={course.title}
         onChange={onChange}
-        />
+        error={errors.title}/>
 
-      {/* <SelectInput
+      <SelectInput
         name="authorId"
         label="Author"
+        value={course.authorId}
         defaultOption="Select Author"
         options={allAuthors}
         onChange={onChange}
-        /> */}
+        error={errors.authorId}/>
 
       <TextInput
         name="category"
         label="Category"
+        value={course.category}
         onChange={onChange}
-        />
+        error={errors.category}/>
 
       <TextInput
         name="length"
         label="Length"
+        value={course.length}
         onChange={onChange}
-        />
+        error={errors.length}/>
 
       <input 
         type="submit"
@@ -45,11 +48,11 @@ const CourseForm = ({course, allAuthors, onSave, onDelete, onChange, deleting, s
 };
 
 CourseForm.propTypes = {
-  course: PropTypes.object,
+  course: PropTypes.object.isRequired,
   allAuthors: PropTypes.array,
-  onSave: PropTypes.func,
-  onDelete: PropTypes.func,
-  onChange: PropTypes.func,
+  onSave: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
   saving: PropTypes.bool,
   errors: PropTypes.object
 };
