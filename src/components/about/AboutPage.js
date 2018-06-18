@@ -1,11 +1,37 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 // import {Form} from 'react-redux-form';
+import {connect} from 'react-redux';
 import Form, {Input, Fieldset} from 'react-bootstrap-form';
 import CourseForm from './CourseForm';
+import {loadCoursesSucess} from '../../actions/coursesActions' 
+import {loadAurthorsucess} from '../../actions/coursesActions' 
+
+
+connect((store) => {
+  return {
+    courses: store.courses.courses,
+    cousesFetched: store.courses.fetched,
+    aurthors: store.aurthors.aurthors,
+  };
+})
 
 console.log(this.state);
 class AboutPage extends Component {
+
+
+  componentWillMount() {
+    this.props.dispatch(loadCoursesSucess());
+      
+  console.log(this.props);
+  console.log(this.state);
+  }
+
+  fetchaurthors() {
+    this.props.dispatch(loadAurthorsucess())
+  }
+
+
   
   render() {
     return (
@@ -27,4 +53,12 @@ class AboutPage extends Component {
   }
 }
 
-export default AboutPage;
+
+
+function mapDispatchtoProps (state, ownProps) {
+  return{
+    courses: state.courses  
+  };
+}
+
+export default connect( mapDispatchtoProps )(AboutPage);

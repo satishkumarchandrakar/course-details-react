@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import configureStore from './store/configureStore';
+// import configureStore from './store/configureStore';
 // import { Route } from 'react-router';
 import { HashRoute,BrowserRouter,Route,Switch } from 'react-router-dom';
 import createHistory from "history/createBrowserHistory"
@@ -12,10 +12,12 @@ import routes from './routes';
 import HomePage from './components/home/HomePage';
 import AboutPage from  './components/about/AboutPage';
 import initialState from './reducers/initialState';
+// import Provider from 'react-redux';
+import store from '../src/store/configureStore.js'
 
 
-const store = configureStore(initialState);
-
+// const store = configureStore(initialState);
+console.log(store);
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter >

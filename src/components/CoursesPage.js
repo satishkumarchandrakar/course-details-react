@@ -47,4 +47,10 @@ function mapStateToProps (state, ownProps) {
   };
 }
 
+function mapDispatchtoProps (state, ownProps) {
+  return{
+    courses: state.courses  
+  };
+}
+
 export default connect( mapConnectToProp , mapDispatchtoProps ) ( CoursesPage );
